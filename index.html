@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>کافه وال — منو</title>
+  <style>
+    :root{
+      --card-radius: 18px;
+      --text-dark: #222;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family: "Vazirmatn", Tahoma, sans-serif;
+      background:#000;
+      color:var(--text-dark);
+      line-height:1.5;
+    }
+
+    .hero{
+      min-height:100vh;
+      background:#111 url('your-background.jpg') center/cover no-repeat;
+      padding:40px 16px 80px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .container{
+      width:100%;
+      max-width:420px;
+      text-align:center;
+      position:relative;
+    }
+
+    .floating-left{
+      position:absolute;
+      left:5px;
+      top:100px;
+      font-size:12px;
+      line-height:1.35;
+      max-width:200px;
+      text-align:center;
+      direction:rtl;
+    }
+
+    .floating-left a{
+      color:#eee;
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      flex-direction:column;
+    }
+    .floating-left a:hover{
+      text-decoration:underline;
+    }
+    .map-icon{
+      width:16px;
+      height:16px;
+      flex-shrink:0;
+      margin-top:2px;
+    }
+
+    .floating-right{
+      position:absolute;
+      right:5px;
+      top:88px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:84px;
+      height:84px;
+      transition:transform .12s ease, box-shadow .12s ease;
+    }
+    .floating-right:hover{ transform:translateY(-3px); }
+
+    .floating-right img{ width:42px; height:42px; }
+
+    .avatar{
+      width:86px;height:86px;border-radius:50%;
+      border:4px solid #fff;overflow:hidden;
+      margin:24px auto 6px;
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover}
+    h1{color:#fff;font-size:26px;margin-top:6px}
+    p.lead{color:#ddd;margin:6px 0 18px}
+
+    .menu-card{
+      background:#fff;
+      border-radius:var(--card-radius);
+      padding:18px;
+      margin:14px 0;
+      box-shadow:0 6px 20px rgba(0,0,0,0.4);
+      text-align:right;
+    }
+
+    .menu-header{
+      display:flex;align-items:center;gap:8px;margin-bottom:10px;
+    }
+    .menu-header h3{margin:0;font-size:18px}
+
+    .menu-list{padding:0 6px}
+    .menu-list .item{
+      display:flex;justify-content:space-between;
+      padding:6px 0;font-size:16px;
+    }
+    .price{color:#0b7b9e;font-weight:bold}
+
+    .warm{border-top:5px solid #e85d6b}
+    .cold{border-top:5px solid #3b82f6}
+    .mocktail{border-top:5px solid #b983ff}
+    .fastfood{border-top:5px solid #7cd389}
+    .shake{border-top:5px solid #ffb347}
+    .coffee{border-top:5px solid #8b5cf6}
+    .addons{border-top:5px solid #10b981}
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="container">
+
+      <!-- آدرس با SVG -->
+      <div class="floating-left">
+        <a href="https://maps.app.goo.gl/ymnY3TVQv7KvMX4H8" target="_blank" rel="noopener noreferrer">
+          <span>خمینی‌شهر منظریه،<br>
+          خیابان پاسداران غربی،<br>
+          ابتدای بلوار بسیج</span>
+          <svg class="map-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="#e53935">
+            <path d="M168 0C75.1 0 0 75.1 0 168c0 87.3 131.4 301.9 168 344 36.6-42.1 168-256.7 168-344C336 75.1 260.9 0 168 0zM168 240c-39.8 0-72-32.2-72-72s32.2-72 72-72 72 32.2 72 72-32.2 72-72 72z"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- لوگو اینستاگرام -->
+      <a class="floating-right" href="https://instagram.com/cafe._whale" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+      </a>
+
+      <div class="avatar"><img src="https://raw.githubusercontent.com/alieffe3/alicute/refs/heads/main/cafe_whale.jpg" alt="کافه وال"></div>
+      <h1>کافه وال</h1>
+      <p class="lead">لحظه‌ها را با ما تجربه کنید</p>
+
+      <div class="menu-card warm">
+        <div class="menu-header">
+          <span style="font-size:20px">☕</span>
+          <h3>قهوه</h3>
+        </div>
+        <div class="menu-list">
+          <div class="item"><span>قهوه</span><span class="price">30</span></div>
+          <div class="item"><span>اسپرسو</span><span class="price">40</span></div>
+          <div class="item"><span>هات‌چاکلت</span><span class="price">45</span></div>
+        </div>
+      </div>
+
+      <!-- بقیه کارت‌ها -->
+      <div class="menu-card cold"><div class="menu-header"><h3>☕ نوشیدنی گرم</h3></div></div>
+      <div class="menu-card mocktail"><div class="menu-header"><h3>🥤 نوشیدنی سرد</h3></div></div>
+      <div class="menu-card fastfood"><div class="menu-header"><h3>🍔 فست‌فود</h3></div></div>
+      <div class="menu-card shake"><div class="menu-header"><h3>🍹 ماکتیل</h3></div></div>
+      <div class="menu-card coffee"><div class="menu-header"><h3>🥛 شِیک</h3></div></div>
+      <div class="menu-card addons"><div class="menu-header"><h3>➕ افزودنی</h3></div></div>
+
+    </div>
+  </div>
+</body>
+</html>
