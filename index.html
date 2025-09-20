@@ -69,6 +69,7 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
+      flex-direction:column;
       width:84px;
       height:84px;
       transition:transform .12s ease, box-shadow .12s ease;
@@ -76,6 +77,13 @@
     .floating-right:hover{ transform:translateY(-3px); }
 
     .floating-right img{ width:42px; height:42px; }
+
+    .instagram-label{
+      color:#ddd;
+      font-size:10px;
+      margin-top:4px;
+      text-decoration:none;
+    }
 
     .avatar{
       width:86px;height:86px;border-radius:50%;
@@ -107,6 +115,30 @@
     }
     .price{color:#0b7b9e;font-weight:bold}
 
+    .menu-item.hidden{
+      display:none;
+    }
+
+    .menu-item.faded{
+      opacity:0.4;
+    }
+
+    .toggle-btn{
+      background:#0b7b9e;
+      color:#fff;
+      border:none;
+      padding:8px 16px;
+      border-radius:6px;
+      cursor:pointer;
+      font-size:14px;
+      margin-top:8px;
+      font-family: inherit;
+    }
+
+    .toggle-btn:hover{
+      background:#0a6b85;
+    }
+
     .warm{border-top:5px solid #e85d6b}
     .cold{border-top:5px solid #3b82f6}
     .mocktail{border-top:5px solid #b983ff}
@@ -135,6 +167,7 @@
       <!-- لوگو اینستاگرام -->
       <a class="floating-right" href="https://instagram.com/cafe._whale" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام">
         <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+        <span class="instagram-label">پیج اینستاگرام ما</span>
       </a>
 
       <div class="avatar"><img src="https://raw.githubusercontent.com/alieffe3/alicute/refs/heads/main/cafe_whale.jpg" alt="کافه وال"></div>
@@ -147,21 +180,135 @@
           <h3>قهوه</h3>
         </div>
         <div class="menu-list">
-          <div class="item"><span>قهوه</span><span class="price">30</span></div>
-          <div class="item"><span>اسپرسو</span><span class="price">40</span></div>
-          <div class="item"><span>هات‌چاکلت</span><span class="price">45</span></div>
+          <div class="menu-item item"><span>قهوه</span><span class="price">30</span></div>
+          <div class="menu-item item"><span>اسپرسو</span><span class="price">40</span></div>
+          <div class="menu-item item"><span>هات‌چاکلت</span><span class="price">45</span></div>
         </div>
+        <button class="toggle-btn" onclick="toggleMenu(this)">مخفی کردن</button>
       </div>
 
       <!-- بقیه کارت‌ها -->
-      <div class="menu-card cold"><div class="menu-header"><h3>☕ نوشیدنی گرم</h3></div></div>
-      <div class="menu-card mocktail"><div class="menu-header"><h3>🥤 نوشیدنی سرد</h3></div></div>
-      <div class="menu-card fastfood"><div class="menu-header"><h3>🍔 فست‌فود</h3></div></div>
-      <div class="menu-card shake"><div class="menu-header"><h3>🍹 ماکتیل</h3></div></div>
-      <div class="menu-card coffee"><div class="menu-header"><h3>🥛 شِیک</h3></div></div>
-      <div class="menu-card addons"><div class="menu-header"><h3>➕ افزودنی</h3></div></div>
+      <div class="menu-card cold">
+        <div class="menu-header">
+          <span style="font-size:20px">☕</span>
+          <h3>نوشیدنی گرم</h3>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item item"><span>چای</span><span class="price">25</span></div>
+          <div class="menu-item item"><span>چای ماسالا</span><span class="price">35</span></div>
+          <div class="menu-item faded item"><span>دمنوش</span><span class="price">30</span></div>
+          <div class="menu-item hidden item"><span>شکلات داغ</span><span class="price">40</span></div>
+          <div class="menu-item hidden item"><span>نسکافه</span><span class="price">35</span></div>
+        </div>
+        <button class="toggle-btn" onclick="toggleMenu(this)">نمایش همه</button>
+      </div>
+
+      <div class="menu-card mocktail">
+        <div class="menu-header">
+          <span style="font-size:20px">🥤</span>
+          <h3>نوشیدنی سرد</h3>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item item"><span>آیس کافی</span><span class="price">45</span></div>
+          <div class="menu-item item"><span>کولا</span><span class="price">25</span></div>
+          <div class="menu-item faded item"><span>لیموناد</span><span class="price">35</span></div>
+          <div class="menu-item hidden item"><span>آب میوه طبیعی</span><span class="price">40</span></div>
+          <div class="menu-item hidden item"><span>آیس تی</span><span class="price">30</span></div>
+        </div>
+        <button class="toggle-btn" onclick="toggleMenu(this)">نمایش همه</button>
+      </div>
+
+      <div class="menu-card fastfood">
+        <div class="menu-header">
+          <span style="font-size:20px">🍔</span>
+          <h3>فست‌فود</h3>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item item"><span>برگر کلاسیک</span><span class="price">85</span></div>
+          <div class="menu-item item"><span>ساندویچ کلاب</span><span class="price">65</span></div>
+          <div class="menu-item faded item"><span>پیتزا مینی</span><span class="price">70</span></div>
+          <div class="menu-item hidden item"><span>هات داگ</span><span class="price">55</span></div>
+          <div class="menu-item hidden item"><span>سیب زمینی سرخ شده</span><span class="price">35</span></div>
+        </div>
+        <button class="toggle-btn" onclick="toggleMenu(this)">نمایش همه</button>
+      </div>
+
+      <div class="menu-card shake">
+        <div class="menu-header">
+          <span style="font-size:20px">🍹</span>
+          <h3>ماکتیل</h3>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item item"><span>موهیتو</span><span class="price">50</span></div>
+          <div class="menu-item item"><span>شیرلی تمپل</span><span class="price">45</span></div>
+          <div class="menu-item faded item"><span>بلو لاگون</span><span class="price">55</span></div>
+          <div class="menu-item hidden item"><span>پینا کولادا</span><span class="price">60</span></div>
+          <div class="menu-item hidden item"><span>کاسموپولیتن</span><span class="price">58</span></div>
+        </div>
+        <button class="toggle-btn" onclick="toggleMenu(this)">نمایش همه</button>
+      </div>
+
+      <div class="menu-card coffee">
+        <div class="menu-header">
+          <span style="font-size:20px">🥛</span>
+          <h3>شِیک</h3>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item item"><span>شیک شکلات</span><span class="price">55</span></div>
+          <div class="menu-item item"><span>شیک وانیل</span><span class="price">50</span></div>
+          <div class="menu-item faded item"><span>شیک توت فرنگی</span><span class="price">60</span></div>
+          <div class="menu-item hidden item"><span>شیک موز</span><span class="price">55</span></div>
+          <div class="menu-item hidden item"><span>شیک کاراملی</span><span class="price">58</span></div>
+        </div>
+        <button class="toggle-btn" onclick="toggleMenu(this)">نمایش همه</button>
+      </div>
+
+      <div class="menu-card addons">
+        <div class="menu-header">
+          <span style="font-size:20px">➕</span>
+          <h3>افزودنی</h3>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item item"><span>شات اضافی اسپرسو</span><span class="price">10</span></div>
+          <div class="menu-item item"><span>شیر بادام</span><span class="price">8</span></div>
+          <div class="menu-item faded item"><span>سیروپ وانیل</span><span class="price">5</span></div>
+          <div class="menu-item hidden item"><span>خامه</span><span class="price">7</span></div>
+          <div class="menu-item hidden item"><span>عسل</span><span class="price">6</span></div>
+        </div>
+        <button class="toggle-btn" onclick="toggleMenu(this)">نمایش همه</button>
+      </div>
 
     </div>
   </div>
+
+  <script>
+    function toggleMenu(button) {
+      const menuCard = button.parentElement;
+      const hiddenItems = menuCard.querySelectorAll('.menu-item.hidden');
+      const fadedItems = menuCard.querySelectorAll('.menu-item.faded');
+      
+      if (button.textContent === 'نمایش همه') {
+        // نمایش همه آیتم‌ها
+        hiddenItems.forEach(item => {
+          item.classList.remove('hidden');
+        });
+        fadedItems.forEach(item => {
+          item.classList.remove('faded');
+        });
+        button.textContent = 'مخفی کردن';
+      } else {
+        // مخفی کردن آیتم‌ها
+        const allItems = menuCard.querySelectorAll('.menu-item');
+        allItems.forEach((item, index) => {
+          if (index >= 3) {
+            item.classList.add('hidden');
+          } else if (index === 2) {
+            item.classList.add('faded');
+          }
+        });
+        button.textContent = 'نمایش همه';
+      }
+    }
+  </script>
 </body>
 </html>
