@@ -320,6 +320,58 @@
     .shake{border-top:5px solid #ffb347}
     .coffee{border-top:5px solid #8b5cf6}
     .addons{border-top:5px solid #10b981}
+
+/* پس‌زمینه پاییزی */
+body {
+  background: linear-gradient(180deg, #ff8c00, #ffa500, #8b4513);
+}
+
+.hero {
+  background: none; /* حذف تصویر پس‌زمینه قبلی */
+  position: relative;
+  overflow: hidden;
+}
+
+/* استایل برگ‌ها */
+.leaf {
+  position: absolute;
+  top: -50px;
+  width: 40px;
+  height: 40px;
+  opacity: 0.7;
+  pointer-events: none; /* جلوگیری از تعامل با برگ‌ها */
+  animation: fall linear infinite, sway ease-in-out infinite;
+}
+
+/* انیمیشن ریزش برگ‌ها */
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+/* انیمیشن وزش باد (حرکت افقی) */
+@keyframes sway {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(50px);
+  }
+}
+
+/* تنظیمات برگ‌ها برای تنوع در سرعت و تأخیر */
+.leaf:nth-child(odd) {
+  animation-duration: 8s, 3s; /* مدت زمان ریزش و وزش باد */
+}
+.leaf:nth-child(even) {
+  animation-duration: 10s, 4s; /* تنوع در سرعت */
+}
   </style>
 </head>
 <body>
@@ -600,6 +652,47 @@
         button.textContent = 'نمایش همه';
       }
     }
+
+// ایجاد و مدیریت برگ‌ها
+function createLeaf() {
+  const leafContainer = document.querySelector('.hero');
+  const leafCount = document.querySelectorAll('.leaf').length;
+
+  if (leafCount >= 15) {
+    // حذف قدیمی‌ترین برگ اگر تعداد بیشتر از 15 شد
+    const oldestLeaf = document.querySelector('.leaf');
+    if (oldestLeaf) oldestLeaf.remove();
+  }
+
+  const leaf = document.createElement('div');
+  leaf.className = 'leaf';
+  leaf.style.left = `${Math.random() * 100}vw`; // موقعیت تصادفی افقی
+  leaf.style.animationDelay = `${Math.random() * 5}s`; // تأخیر تصادفی
+  leaf.style.animationDuration = `${8 + Math.random() * 4}s, ${3 + Math.random() * 2}s`; // تنوع در سرعت
+
+  // انتخاب تصادفی رنگ زرد یا نارنجی
+  const colors = ['#FFC107', '#FF5722'];
+  const leafColor = colors[Math.floor(Math.random() * colors.length)];
+
+  // SVG برگ سه‌پر
+  leaf.innerHTML = `
+    <svg viewBox="0 0 100 100" style="width: 100%; height: 100%; fill: ${leafColor};">
+      <path d="M50 10 C30 20, 20 40, 30 60 C40 80, 60 80, 70 60 C80 40, 70 20, 50 10 Z
+             M40 30 C35 35, 30 45, 35 50 C40 55, 45 50, 50 45 C55 40, 50 35, 45 30 Z
+             M60 30 C65 35, 70 45, 65 50 C60 55, 55 50, 50 45 C45 40, 50 35, 55 30 Z"/>
+    </svg>
+  `;
+
+  leafContainer.appendChild(leaf);
+
+  // حذف برگ بعد از اتمام انیمیشن
+  leaf.addEventListener('animationend', () => {
+    leaf.remove();
+  });
+}
+
+// ایجاد برگ‌ها به‌صورت مداوم
+setInterval(createLeaf, 1000); // هر 1 ثانیه یک برگ جدید
   </script>
 </body>
 </html>
